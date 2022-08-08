@@ -1,15 +1,18 @@
 <template>
   <div id="app">
+    <AppLayoutHeader />
     <AppLayout />
   </div>
 </template>
 
 <script>
 import AppLayout from "@/layouts/AppLayout";
+import AppLayoutHeader from "@/layouts/AppLayoutHeader";
 
 export default {
   name: "App",
   components: {
+    AppLayoutHeader,
     AppLayout,
   },
 };
