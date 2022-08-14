@@ -39,13 +39,10 @@
               </span>
 
               <item-counter
-                :index="id"
-                :ingredient-name="name"
                 :ingredient-count="
                   getIngredientCount(name, selectedIngredients)
                 "
-                @changeIngredientCount="changeIngredientCount"
-                @changeCount="changeCount"
+                @changeIngredientCount="changeIngredientCount($event, name)"
               />
             </li>
           </ul>
@@ -88,12 +85,7 @@ export default {
         : 0;
     },
     changeIngredientCount(count, name) {
-      console.log(count, name);
-      this.$emit("update:changeIngredientCount", { [name]: count });
-    },
-    changeCount(val1, val2) {
-      console.log(val1);
-      console.log(val2);
+      this.$emit("update:selectedIngredients", name, count);
     },
   },
 };

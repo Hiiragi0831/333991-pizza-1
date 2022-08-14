@@ -17,7 +17,8 @@
           :ingredients="ingredients"
           :sauces="sauces"
           :selectedSauces.sync="selectedSauces"
-          :selectedIngredients.sync="selectedIngredients"
+          :selectedIngredients="selectedIngredients"
+          @update:selectedIngredients="updateSelectedIngredients"
         />
 
         <builder-content-pizza :pizzaName.sync="pizzaName" />
@@ -58,6 +59,12 @@ export default {
     this.selectedDough = this.dough[0] || null;
     this.selectedSizes = this.sizes[0] || null;
     this.selectedSauces = this.sauces[0] || null;
+  },
+  methods: {
+    updateSelectedIngredients(name, count) {
+      console.log(this.selectedIngredients);
+      this.$set(this.selectedIngredients, name, count);
+    },
   },
   computed: {
     dough() {

@@ -4,9 +4,7 @@
       type="button"
       class="counter__button counter__button--minus"
       :disabled="isDisabledButtonMinus"
-      @changeCount="
-        $emit('changeIngredientCount', ingredientCount - 1, ingredientName)
-      "
+      @click="$emit('changeIngredientCount', ingredientCount - 1)"
     >
       <span class="visually-hidden">Меньше</span>
     </button>
@@ -20,9 +18,7 @@
       type="button"
       class="counter__button counter__button--plus"
       :disabled="isDisabledButtonPlus"
-      @changeCount="
-        $emit('changeIngredientCount', ingredientCount + 1, ingredientName)
-      "
+      @click="$emit('changeIngredientCount', ingredientCount + 1)"
     >
       <span class="visually-hidden">Больше</span>
     </button>
@@ -34,24 +30,10 @@ import { MAX_INGREDIENT_COUNT, MIN_INGREDIENT_COUNT } from "@/constants";
 export default {
   name: "ItemCounter",
   props: {
-    index: {
-      type: Number,
-      default: 0,
-    },
-    ingredientName: {
-      type: String,
-      default: "",
-    },
     ingredientCount: {
       type: Number,
       default: 0,
     },
-  },
-  data() {
-    return {
-      count: 0,
-      isIngredients: false,
-    };
   },
   computed: {
     isDisabledButtonPlus() {
