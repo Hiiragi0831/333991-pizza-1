@@ -34,9 +34,18 @@
               :key="id"
               :title="name"
             >
-              <span class="filling" :class="`filling--${value}`">
-                {{ name }}
-              </span>
+              <AppDrop @drop="$emit('drop', $event)">
+                <AppDrag
+                  :ingredient-name="name"
+                  :ingredient-count="
+                    getIngredientCount(name, selectedIngredients)
+                  "
+                >
+                  <span class="filling" :class="`filling--${value}`">
+                    {{ name }}
+                  </span>
+                </AppDrag>
+              </AppDrop>
 
               <item-counter
                 :ingredient-count="
@@ -54,9 +63,12 @@
 
 <script>
 import ItemCounter from "@/common/components/ItemCounter";
+import AppDrag from "@/common/components/AppDrag";
+import AppDrop from "@/common/components/AppDrop";
+
 export default {
   name: "BuilderIngredientsSelector",
-  components: { ItemCounter },
+  components: { ItemCounter, AppDrag, AppDrop },
   props: {
     ingredients: {
       type: Array,
